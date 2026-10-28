@@ -2,6 +2,8 @@
 
 A working **Zoho Creator** application for a fictional property rental business, connected to **Zoho CRM** and **Zoho Books**. Staff book stays in Creator. Deluge prices each booking, blocks double bookings and enforces a status lifecycle. Every booking appears in CRM as a Deal, a deal lost in CRM cancels the booking, and a completed stay is invoiced in Books automatically.
 
+> **Portfolio page:** https://gonzalodeandrade.github.io/zoho-rental-management/
+>
 > **Status:** deployed and tested in real Zoho accounts (Creator, CRM, Books). 53 test cases ran against the live apps and 52 passed. The remaining one (L01, delivery of the booking email) is waiting for the owner to confirm the copy in their inbox ([results](TEST_RESULTS.md)). All sample data is fictional.
 
 ![Dashboard](screenshots/01-dashboard.png)

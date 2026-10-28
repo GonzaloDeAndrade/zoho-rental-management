@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gonzalo de Andrade · Zoho Developer</title>
+<meta name="description" content="Zoho developer portfolio: a rental management system on Zoho Creator, connected two-way with Zoho CRM and with Zoho Books, built with Deluge and tested end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --muted: #55607a;
+    --line: #e3e7f0;
+    --accent: #2f5bea;
+    --accent-soft: #e8eefe;
+    --hero-1: #0b1230;
+    --hero-2: #17255e;
+    --ok: #12805c;
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 8px 24px rgba(15, 23, 42, .06);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .88em; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 20; background: rgba(11, 18, 48, .92); backdrop-filter: blur(8px); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  nav .brand { color: #fff; font-weight: 700; letter-spacing: -.01em; }
+  nav .links { display: flex; gap: 22px; }
+  nav .links a { color: #c7d2fe; font-size: 14px; font-weight: 500; }
+  nav .links a:hover { color: #fff; text-decoration: none; }
+
+  /* Hero */
+  .hero { background: radial-gradient(1200px 500px at 85% -10%, #3651c9 0%, transparent 60%), linear-gradient(160deg, var(--hero-1), var(--hero-2)); color: #fff; padding: 88px 0 96px; }
+  .hero .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #a5b4fc; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.08; letter-spacing: -.03em; margin: 0 0 20px; max-width: 820px; }
+  .hero h1 span { color: #93c5fd; }
+  .hero p.lead { font-size: clamp(17px, 2vw, 20px); color: #cbd5ff; max-width: 680px; margin: 0 0 34px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 15px; border: 1px solid transparent; }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn.primary { background: #fff; color: var(--hero-1); }
+  .btn.ghost { border-color: rgba(255, 255, 255, .3); color: #fff; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; max-width: 860px; }
+  .stat { border-left: 2px solid rgba(147, 197, 253, .5); padding-left: 14px; }
+  .stat b { display: block; font-size: 28px; letter-spacing: -.02em; }
+  .stat span { color: #a5b4fc; font-size: 14px; }
+
+  /* Sections */
+  section { padding: 84px 0; }
+  .kicker { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+  h2 { font-size: clamp(28px, 3.6vw, 38px); letter-spacing: -.025em; line-height: 1.15; margin: 0 0 14px; }
+  .sub { color: var(--muted); font-size: 18px; max-width: 720px; margin: 0 0 40px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+  /* Video */
+  .video { aspect-ratio: 16 / 9; overflow: hidden; position: relative; background: #0b1230; }
+  .video iframe { width: 100%; height: 100%; border: 0; }
+  .video .poster { position: absolute; inset: 0; background-size: cover; background-position: top center; filter: brightness(.45) blur(1px); }
+  .video .soon { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #fff; padding: 24px; }
+  .video .soon b { display: block; font-size: 22px; margin-bottom: 6px; }
+  .video .soon span { color: #c7d2fe; }
+  .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .video-meta { padding: 18px 20px; }
+  .video-meta h3 { margin: 0 0 4px; font-size: 17px; }
+  .video-meta p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  /* Architecture */
+  .arch { display: grid; grid-template-columns: 1fr auto 1.25fr auto 1fr; align-items: center; gap: 14px; padding: 32px; }
+  .node { border: 1px solid var(--line); border-radius: 14px; padding: 18px; background: #fbfcff; }
+  .node.main { border-color: #c7d3fb; background: var(--accent-soft); }
+  .node h4 { margin: 0 0 6px; font-size: 16px; }
+  .node p { margin: 0; color: var(--muted); font-size: 14px; }
+  .node ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+  .arrows { display: grid; gap: 10px; font-size: 12.5px; color: var(--muted); text-align: center; min-width: 130px; }
+  .arrows div { border-top: 2px dashed #b8c4ec; padding-top: 4px; position: relative; }
+  .arrows .r::after, .arrows .l::before { position: absolute; top: -9px; font-size: 13px; color: #8094d8; }
+  .arrows .r::after { content: "▶"; right: -4px; }
+  .arrows .l::before { content: "◀"; left: -4px; }
+
+  /* Interactive flow */
+  .flow { display: grid; grid-template-columns: 330px 1fr; gap: 24px; align-items: start; }
+  .steps { display: grid; gap: 10px; }
+  .step { min-width: 0; width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 32px 1fr; gap: 10px; align-items: start; transition: border-color .15s, box-shadow .15s; }
+  .step:hover { border-color: #c7d3fb; }
+  .step[aria-selected="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .step .n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--accent-soft); color: var(--accent); }
+  .step[aria-selected="true"] .n { background: var(--accent); color: #fff; }
+  .step b { display: block; font-size: 15px; }
+  .step small { color: var(--muted); font-size: 13px; }
+  .stage { overflow: hidden; min-width: 0; }
+  .stage img { width: 100%; border-bottom: 1px solid var(--line); cursor: zoom-in; background: #fff; }
+  .stage .txt { padding: 20px 24px; }
+  .stage .app { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-bottom: 8px; }
+  .stage h3 { margin: 0 0 6px; font-size: 20px; }
+  .stage p { margin: 0; color: var(--muted); }
+
+  /* Skills */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .skill { padding: 24px; }
+  .skill h3 { margin: 0 0 8px; font-size: 17px; }
+  .skill p { margin: 0 0 12px; color: var(--muted); font-size: 15px; }
+  .skill a { font-size: 14px; font-weight: 600; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .shot { min-width: 0; width: 100%; display: block; overflow: hidden; cursor: zoom-in; padding: 0; border: 1px solid var(--line); font: inherit; text-align: left; color: inherit; }
+  .shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; width: 100%; }
+  .shot span { display: block; padding: 10px 14px; font-size: 14px; font-weight: 500; }
+
+  /* Tests */
+  .tests { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .bars { padding: 26px; }
+  .bar { margin-bottom: 14px; }
+  .bar .lbl { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; }
+  .bar .track { height: 8px; border-radius: 99px; background: #edf0f7; overflow: hidden; }
+  .bar .fill { height: 100%; background: var(--ok); border-radius: 99px; }
+  .tests ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .tests li { margin-bottom: 8px; }
+
+  /* Contact */
+  .contact { background: linear-gradient(160deg, var(--hero-1), var(--hero-2)); color: #fff; text-align: center; }
+  .contact h2 { color: #fff; }
+  .contact p { color: #c7d2fe; max-width: 600px; margin: 0 auto 28px; font-size: 18px; }
+  .contact .btns { justify-content: center; }
+  footer { background: var(--hero-1); color: #8c98c9; font-size: 13px; text-align: center; padding: 22px 0; }
+
+  /* Lightbox */
+  .lb { position: fixed; inset: 0; background: rgba(8, 12, 32, .9); display: none; place-items: center; z-index: 50; padding: 24px; cursor: zoom-out; }
+  .lb.open { display: grid; }
+  .lb > div { max-width: min(1400px, 100%); }
+  .lb img { max-height: 84vh; max-width: 100%; margin: 0 auto; border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+  .lb p { color: #dbe3ff; text-align: center; margin: 12px 0 0; }
+
+  @media (max-width: 900px) {
+    .arch { grid-template-columns: 1fr; }
+    .arrows { min-width: 0; }
+    .arrows div { border-top: 0; border-left: 2px dashed #b8c4ec; padding: 2px 0 2px 10px; text-align: left; }
+    .arrows .r::after, .arrows .l::before { content: ""; }
+    .flow, .videos, .tests { grid-template-columns: 1fr; }
+    .grid3, .gallery { grid-template-columns: 1fr 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 22px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 16px; }
+    nav .links { display: none; }
+    .hero { padding: 60px 0 68px; }
+    section { padding: 60px 0; }
+    .grid3, .gallery { grid-template-columns: 1fr; }
+    .arch { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="brand">Gonzalo de Andrade</span>
+    <div class="links">
+      <a href="#demo">Demo</a>
+      <a href="#how">How it works</a>
+      <a href="#skills">Skills</a>
+      <a href="#tests">Testing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Zoho Developer · Creator · CRM · Books · Deluge</span>
+    <h1>I build business systems on Zoho that <span>connect the whole flow</span>, from booking to invoice.</h1>
+    <p class="lead">Featured project: a rental management system on Zoho Creator, synced two-way with Zoho CRM and invoicing automatically in Zoho Books. It is deployed on real Zoho accounts and tested end to end.</p>
+    <div class="btns">
+      <a class="btn primary" href="#demo">▶ Watch the demo</a>
+      <a class="btn ghost" href="https://github.com/GonzaloDeAndrade/zoho-rental-management">View the code on GitHub</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>3</b><span>Zoho apps connected</span></div>
+      <div class="stat"><b>2-way</b><span>Creator ⇄ CRM sync</span></div>
+      <div class="stat"><b>50+</b><span>automated end-to-end tests</span></div>
+      <div class="stat"><b>0</b><span>double bookings allowed</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="kicker">Demo</div>
+    <h2>See it working</h2>
+    <p class="sub">A 90-second overview, and a technical walkthrough of the Deluge code and the integrations.</p>
+    <div class="videos">
+      <div class="card" style="overflow:hidden">
+        <div class="video" id="video-main" data-video=""></div>
+        <div class="video-meta"><h3>Overview · 90 seconds</h3><p>Booking, validation, the CRM pipeline and the Books invoice, on live data.</p></div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="video" id="video-tech" data-video=""></div>
+        <div class="video-meta"><h3>Technical walkthrough · 3–4 min</h3><p>Architecture, Deluge rules, the two-way sync shown live, and the tests.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Architecture</div>
+    <h2>Three Zoho apps, one flow</h2>
+    <p class="sub">Creator is the system of record for bookings. Every booking appears in CRM for sales, and every completed stay is invoiced in Books.</p>
+
+    <div class="card arch">
+      <div class="node">
+        <h4>Zoho CRM</h4>
+        <p>Sales pipeline</p>
+        <ul><li>Deal per booking</li><li>Account + Contact per guest</li><li>Workflow rule + Deluge function</li></ul>
+      </div>
+      <div class="arrows">
+        <div class="l">Deal created / updated<br>stage follows status</div>
+        <div class="r">Deal marked Closed Lost<br>→ booking cancelled</div>
+      </div>
+      <div class="node main">
+        <h4>Zoho Creator · Rental Management</h4>
+        <p>Operations: customers, properties, rentals</p>
+        <ul><li>Live pricing (nights × rate)</li><li>No overlapping bookings</li><li>Status lifecycle with locked records</li><li>Confirmation email to the guest</li><li>KPI dashboard</li></ul>
+      </div>
+      <div class="arrows">
+        <div class="r">Stay completed<br>→ invoice created</div>
+      </div>
+      <div class="node">
+        <h4>Zoho Books</h4>
+        <p>Finance</p>
+        <ul><li>Contact per guest</li><li>Invoice per completed stay</li><li>Never invoiced twice</li></ul>
+      </div>
+    </div>
+
+    <h3 style="margin:56px 0 6px;font-size:22px;letter-spacing:-.01em">Follow one booking through the system</h3>
+    <p class="sub" style="margin-bottom:24px">Click each step. All screenshots come from the live apps.</p>
+    <div class="flow">
+      <div class="steps" role="tablist" id="steps"></div>
+      <div class="card stage" id="stage">
+        <img id="stage-img" alt="">
+        <div class="txt"><span class="app" id="stage-app"></span><h3 id="stage-title"></h3><p id="stage-text"></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="kicker">What this project shows</div>
+    <h2>Skills, with the code to back them</h2>
+    <p class="sub">Each card links to the exact source file in the repository.</p>
+    <div class="grid3">
+      <div class="card skill"><h3>Creator app design</h3><p>Relational forms with lookups, unique and mandatory fields, seven reports, and a KPI dashboard page built in ZML.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/DATA_MODEL.md">Data model →</a></div>
+      <div class="card skill"><h3>Deluge business rules</h3><p>Server-side validation: overlap detection on half-open date ranges, a 365-day limit, and a status lifecycle that locks final records.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/app/src/deluge/rental_validate.dg">rental_validate.dg →</a></div>
+      <div class="card skill"><h3>CRM integration</h3><p>Booking → Deal, with Account and Contact matched by name and email. The Deal ID is stored on the booking, so saving again updates the same Deal.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/app/src/deluge/crm_sync.dg">crm_sync.dg →</a></div>
+      <div class="card skill"><h3>CRM development</h3><p>A workflow rule and a Deluge function call the Creator API. They cancel only reserved bookings and can't loop. The connection uses minimal OAuth scopes.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/app/crm/deal_closed_lost.dg">deal_closed_lost.dg →</a></div>
+      <div class="card skill"><h3>Books invoicing</h3><p>A completed stay creates a draft invoice: guest, nights × rate, rental reference. The total matches the dashboard's realized revenue.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/app/src/deluge/books_invoice.dg">books_invoice.dg →</a></div>
+      <div class="card skill"><h3>App as source code</h3><p>The whole Creator app is a <code>.ds</code> file generated from a template and separate Deluge files. It is versioned and reviewable in Git.</p><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/app/build.mjs">build.mjs →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="kicker">Screenshots</div>
+    <h2>Inside the apps</h2>
+    <p class="sub">Click to enlarge. All data is fictional.</p>
+    <div class="gallery" id="gallery-grid"></div>
+  </div>
+</section>
+
+<section id="tests">
+  <div class="wrap">
+    <div class="kicker">Quality</div>
+    <h2>Tested end to end, against the live apps</h2>
+    <p class="sub">Playwright scripts drive the real Zoho apps like a user would, compare each result with the expected one, and save a screenshot as evidence.</p>
+    <div class="tests">
+      <div class="card bars" id="bars"></div>
+      <ul>
+        <li>Every business rule has a passing and a failing case: overlaps, date limits, status transitions, locked records.</li>
+        <li>The integrations are verified on the other side: the Deal in CRM, the invoice in Books, the cancellation back in Creator.</li>
+        <li>The full results table, with a screenshot per test, is in the repository.</li>
+        <li><a href="https://github.com/GonzaloDeAndrade/zoho-rental-management/blob/main/TEST_RESULTS.md">Open the test results →</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>I'm looking for Zoho developer roles: Creator, CRM, Books and Zoho One implementations.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://www.linkedin.com/in/gonzalo-de-andrade-20a2791b8/">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/GonzaloDeAndrade">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>Gonzalo de Andrade · Zoho Developer · All data in the screenshots is fictional</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true"><div><img id="lb-img" alt=""><p id="lb-cap"></p></div></div>
+
+<script>
+  // Paste the YouTube video IDs here once the videos are uploaded
+  // (the part after "v=" in the YouTube link).
+  const VIDEOS = { 'video-main': '', 'video-tech': '' };
+
+  for (const [id, yt] of Object.entries(VIDEOS)) {
+    const box = document.getElementById(id);
+    box.innerHTML = yt
+      ? `<iframe src="https://www.youtube-nocookie.com/embed/${yt}" title="Demo video" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
+      : `<div class="poster" style="background-image:url('screenshots/${id === 'video-main' ? '01-dashboard' : '15-crm-deals-pipeline'}.png')"></div><div class="soon"><div><b>Video coming soon</b><span>Meanwhile, follow a booking step by step below.</span></div></div>`;
+  }
+
+  const steps = [
+    { app: 'Creator', title: 'Book a stay', short: 'Price calculated as you type', img: '02-rental-form-calculation', text: 'Picking a property copies its daily rate into the booking, and Deluge calculates nights and total right away. The rate is a snapshot: later price changes never alter existing bookings.' },
+    { app: 'Creator', title: 'Double booking blocked', short: 'Server-side validation', img: '03-validation-overlap', text: 'On save, the overlap check runs on the server and names the booking it conflicts with. Same-day turnover is allowed, and cancelled bookings are ignored.' },
+    { app: 'Creator → CRM', title: 'Deal appears in CRM', short: 'Sales sees the pipeline', img: '15-crm-deals-pipeline', text: 'Each booking becomes a Deal, with the guest as Account and Contact. Status changes in Creator move the Deal stage: completed → Closed Won, cancelled → Closed Lost.' },
+    { app: 'CRM → Creator', title: 'Deal lost, booking cancelled', short: 'Two-way sync', img: '19-crm-deal-lost-note', text: 'When sales marks the Deal Closed Lost, a CRM workflow rule calls a Deluge function. The function cancels the booking through the Creator API and leaves this note on the Deal.' },
+    { app: 'Creator', title: '…and the dates are free again', short: 'Cancelled in Creator', img: '20-rental-cancelled-from-crm', text: 'The booking is now Cancelled in Creator, so the property can be booked for those dates. Only reserved bookings can be cancelled this way, and the sync cannot loop.' },
+    { app: 'Creator → Books', title: 'Stay completed, invoice created', short: 'Automatic invoicing', img: '18-books-invoice-detail', text: 'When a stay is completed, a Books invoice is created for the guest: nights × rate, with the rental reference. Its number is stored on the booking, so a stay is never invoiced twice.' },
+    { app: 'Creator', title: 'Live KPIs', short: 'Dashboard', img: '01-dashboard', text: 'Active and upcoming rentals, available properties, and realized versus booked revenue, each computed live. Realized revenue equals the sum of the Books invoices.' },
+  ];
+  const stepsEl = document.getElementById('steps');
+  const show = (i) => {
+    const s = steps[i];
+    document.getElementById('stage-img').src = `screenshots/${s.img}.png`;
+    document.getElementById('stage-img').alt = s.title;
+    document.getElementById('stage-app').textContent = s.app;
+    document.getElementById('stage-title').textContent = s.title;
+    document.getElementById('stage-text').textContent = s.text;
+    [...stepsEl.children].forEach((b, j) => b.setAttribute('aria-selected', j === i));
+  };
+  steps.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'step';
+    b.setAttribute('role', 'tab');
+    b.innerHTML = `<span class="n">${i + 1}</span><span><b>${s.title}</b><small>${s.app} · ${s.short}</small></span>`;
+    b.onclick = () => show(i);
+    stepsEl.appendChild(b);
+  });
+  show(0);
+
+  const shots = [
+    ['01-dashboard', 'KPI dashboard'], ['04-all-rentals', 'All rentals, colour-coded by status'], ['05-all-properties', 'Properties: availability kept in sync'],
+    ['16-crm-deal-detail', 'CRM Deal linked to the guest'], ['17-books-invoices', 'Books: one invoice per completed stay'], ['12-validation-maintenance', 'Properties in maintenance can\'t be booked'],
+    ['13-validation-status-transition', 'Invalid status changes are rejected'], ['11-validation-date-range', 'Date range validation'], ['10-customers', 'Customers'],
+  ];
+  const gal = document.getElementById("gallery-grid");
+  for (const [img, cap] of shots) {
+    const b = document.createElement('button');
+    b.className = 'card shot';
+    b.innerHTML = `<img src="screenshots/${img}.png" alt="${cap}" loading="lazy"><span>${cap}</span>`;
+    b.onclick = () => openLb(`screenshots/${img}.png`, cap);
+    gal.appendChild(b);
+  }
+  const lb = document.getElementById('lb');
+  const openLb = (src, cap) => { document.getElementById('lb-img').src = src; document.getElementById('lb-cap').textContent = cap; lb.classList.add('open'); };
+  lb.onclick = () => lb.classList.remove('open');
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('open'); });
+  document.getElementById('stage-img').onclick = (e) => openLb(e.target.src, document.getElementById('stage-title').textContent);
+
+  const bars = [['Bookings, calculations, availability', 13, 13], ['Validation: required, dates, overlaps, statuses', 16, 16], ['Status transitions and locked records', 8, 8], ['Property rules and uniqueness', 5, 5], ['Dashboard KPIs', 1, 1], ['CRM, Books and email integrations', 9, 10]];
+  document.getElementById('bars').innerHTML = bars.map(([l, p, t]) => `<div class="bar"><div class="lbl"><span>${l}</span><span class="mono">${p}/${t}</span></div><div class="track"><div class="fill" style="width:${(p / t) * 100}%"></div></div></div>`).join('') + '<p style="margin:16px 0 0;color:var(--muted);font-size:13px">The one open case is confirming delivery of the booking email in the owner\'s inbox.</p>';
+</script>
+</body>
+</html>
