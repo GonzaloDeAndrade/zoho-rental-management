@@ -106,6 +106,8 @@ The import creates the structure only, not the data. Zoho Creator's Free plan al
 
 ## Author
 
-**Gonzalo de Andrade**, Zoho Developer (CRM, Creator, Books, Deluge, integrations) · [GitHub](https://github.com/GonzaloDeAndrade) · [LinkedIn](https://www.linkedin.com/in/gonzalo-de-andrade-20a2791b8/)
+**Gonzalo de Andrade**, Zoho Developer (CRM, Creator, Books, Deluge, integrations). Also experienced with Zoho One: Zoho Desk, Zoho Analytics, Zoho Flow, Zoho Forms, Zoho WorkDrive, Zoho Recruit, Zoho Sign, Zoho People, Zoho Inventory, Zoho Projects.
+
+[GitHub](https://github.com/GonzaloDeAndrade) · [LinkedIn](https://www.linkedin.com/in/gonzalo-de-andrade-20a2791b8/)
 
 📧 [gonzadeandrade1@gmail.com](mailto:gonzadeandrade1@gmail.com) · 📞 +54 2291 540041
