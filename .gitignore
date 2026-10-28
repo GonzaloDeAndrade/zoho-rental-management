@@ -1,0 +1,5 @@
+node_modules/
+automation/.browser-profile/
+automation/out/*
+!automation/out/results.json
+MACHETE_DEMO.txt

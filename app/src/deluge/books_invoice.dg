@@ -1,0 +1,57 @@
+// Invoice the stay in Zoho Books once the rental is Completed (realized revenue).
+// The customer is matched to a Books contact by email and created if missing.
+// The invoice number is stored on the rental, so each rental is invoiced only once.
+// A Books failure never blocks the rental: it is logged and retried on the next save.
+if(input.Rental_Status == "Completed" && (input.Books_Invoice_No == null || input.Books_Invoice_No == ""))
+{
+	booksOrg = "944467787";
+	payer = Customers[ID == input.Customer];
+	unit = Properties[ID == input.Property];
+	if(payer.count() > 0 && unit.count() > 0)
+	{
+		try
+		{
+			contactId = "";
+			found = zoho.books.getRecords("Contacts",booksOrg,"email=" + payer.Email,"zoho_books_connection");
+			if(found.get("contacts") != null && found.get("contacts").size() > 0)
+			{
+				contactId = found.get("contacts").get(0).get("contact_id");
+			}
+			else
+			{
+				newContact = Map();
+				newContact.put("contact_name",payer.Customer_Name);
+				newContact.put("contact_type","customer");
+				person = Map();
+				person.put("first_name",payer.Customer_Name);
+				person.put("email",payer.Email);
+				person.put("phone",payer.Phone);
+				person.put("is_primary_contact",true);
+				newContact.put("contact_persons",{person});
+				contactId = zoho.books.createRecord("Contacts",booksOrg,newContact,"zoho_books_connection").get("contact").get("contact_id");
+			}
+			line = Map();
+			line.put("name",unit.Property_Name);
+			line.put("description","Stay " + input.Start_Date.toString("dd-MMM-yyyy") + " to " + input.End_Date.toString("dd-MMM-yyyy") + " (" + input.Rental_Reference + ")");
+			line.put("rate",input.Daily_Rate);
+			line.put("quantity",input.Number_of_Days);
+			line.put("unit","nights");
+			invoice = Map();
+			invoice.put("customer_id",contactId);
+			invoice.put("reference_number",input.Rental_Reference);
+			invoice.put("date",input.End_Date.toString("yyyy-MM-dd"));
+			invoice.put("line_items",{line});
+			invoice.put("notes","Thank you for staying with Coastline Stays.");
+			created = zoho.books.createRecord("Invoices",booksOrg,invoice,"zoho_books_connection");
+			info created;
+			if(created.get("invoice") != null)
+			{
+				input.Books_Invoice_No = created.get("invoice").get("invoice_number");
+			}
+		}
+		catch (e)
+		{
+			info "Books invoice failed: " + e;
+		}
+	}
+}

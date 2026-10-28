@@ -1,0 +1,532 @@
+{
+  "S01": {
+    "id": "S01",
+    "area": "Valid rental + calculation",
+    "title": "Create Completed rental: Olivia Bennett / Seaside Loft 101 05-Oct-2026 to 10-Oct-2026",
+    "expected": "Saved; 5 day(s) x rate = $600.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 5 days, $600.00. Report row: RNT-0001 | Olivia Bennett | Seaside Loft 101 | 05-Oct-2026 | 10-Oct-2026 | 5 | $ 120.00 | $ 600.00 | Completed",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S01.png",
+    "executedAt": "2026-10-28T01:40:21.337Z"
+  },
+  "S02": {
+    "id": "S02",
+    "area": "Valid rental + calculation",
+    "title": "Create Completed rental: Mateo Fernandez / Pine Grove Cabin 01-Oct-2026 to 08-Oct-2026",
+    "expected": "Saved; 7 day(s) x rate = $665.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 7 days, $665.00. Report row: RNT-0002 | Mateo Fernandez | Pine Grove Cabin | 01-Oct-2026 | 08-Oct-2026 | 7 | $ 95.00 | $ 665.00 | Completed",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S02.png",
+    "executedAt": "2026-10-28T01:40:46.945Z"
+  },
+  "S03": {
+    "id": "S03",
+    "area": "Valid rental + calculation",
+    "title": "Create Completed rental: Sophie Laurent / Harbor View Apartment 3B 12-Oct-2026 to 15-Oct-2026",
+    "expected": "Saved; 3 day(s) x rate = $450.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 3 days, $450.00. Report row: RNT-0003 | Sophie Laurent | Harbor View Apartment 3B | 12-Oct-2026 | 15-Oct-2026 | 3 | $ 150.00 | $ 450.00 | Completed",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S03.png",
+    "executedAt": "2026-10-28T01:41:07.300Z"
+  },
+  "S04": {
+    "id": "S04",
+    "area": "Valid rental + calculation",
+    "title": "Create Active rental: Daniel Okafor / Harbor View Apartment 3B 25-Oct-2026 to 01-Nov-2026",
+    "expected": "Saved; 7 day(s) x rate = $1050.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 7 days, $1,050.00. Report row: RNT-0004 | Daniel Okafor | Harbor View Apartment 3B | 25-Oct-2026 | 01-Nov-2026 | 7 | $ 150.00 | $ 1,050.00 | Active",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S04.png",
+    "executedAt": "2026-10-28T01:41:27.661Z"
+  },
+  "S05": {
+    "id": "S05",
+    "area": "Valid rental + calculation",
+    "title": "Create Active rental: Hana Sato / Garden House 26-Oct-2026 to 30-Oct-2026",
+    "expected": "Saved; 4 day(s) x rate = $840.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 4 days, $840.00. Report row: RNT-0005 | Hana Sato | Garden House | 26-Oct-2026 | 30-Oct-2026 | 4 | $ 210.00 | $ 840.00 | Active",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S05.png",
+    "executedAt": "2026-10-28T01:41:48.210Z"
+  },
+  "S06": {
+    "id": "S06",
+    "area": "Valid rental + calculation",
+    "title": "Create Reserved rental: Olivia Bennett / Seaside Loft 101 05-Nov-2026 to 12-Nov-2026",
+    "expected": "Saved; 7 day(s) x rate = $840.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 7 days, $840.00. Report row: RNT-0006 | Olivia Bennett | Seaside Loft 101 | 05-Nov-2026 | 12-Nov-2026 | 7 | $ 120.00 | $ 840.00 | Reserved",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S06.png",
+    "executedAt": "2026-10-28T01:42:07.028Z"
+  },
+  "S07": {
+    "id": "S07",
+    "area": "Valid rental + calculation",
+    "title": "Create Reserved rental: Mateo Fernandez / Downtown Studio 5A 10-Nov-2026 to 11-Nov-2026",
+    "expected": "Saved; 1 day(s) x rate = $70.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 1 days, $70.00. Report row: RNT-0007 | Mateo Fernandez | Downtown Studio 5A | 10-Nov-2026 | 11-Nov-2026 | 1 | $ 70.00 | $ 70.00 | Reserved",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S07.png",
+    "executedAt": "2026-10-28T01:42:25.563Z"
+  },
+  "S08": {
+    "id": "S08",
+    "area": "Valid rental + calculation",
+    "title": "Create Reserved rental: Sophie Laurent / Pine Grove Cabin 20-Dec-2026 to 27-Dec-2026",
+    "expected": "Saved; 7 day(s) x rate = $665.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 7 days, $665.00. Report row: RNT-0008 | Sophie Laurent | Pine Grove Cabin | 20-Dec-2026 | 27-Dec-2026 | 7 | $ 95.00 | $ 665.00 | Reserved",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S08.png",
+    "executedAt": "2026-10-28T01:42:44.276Z"
+  },
+  "S09": {
+    "id": "S09",
+    "area": "Valid rental + calculation",
+    "title": "Create Reserved rental: Daniel Okafor / Harbor View Apartment 3B 01-Nov-2026 to 04-Nov-2026",
+    "expected": "Saved; 3 day(s) x rate = $450.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 3 days, $450.00. Report row: RNT-0009 | Daniel Okafor | Harbor View Apartment 3B | 01-Nov-2026 | 04-Nov-2026 | 3 | $ 150.00 | $ 450.00 | Reserved",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S09.png",
+    "executedAt": "2026-10-28T01:43:02.913Z"
+  },
+  "S10": {
+    "id": "S10",
+    "area": "Valid rental + calculation",
+    "title": "Create Reserved rental: Hana Sato / Downtown Studio 5A 15-Nov-2026 to 18-Nov-2026",
+    "expected": "Saved; 3 day(s) x rate = $210.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 3 days, $210.00. Report row: RNT-0010 | Hana Sato | Downtown Studio 5A | 15-Nov-2026 | 18-Nov-2026 | 3 | $ 70.00 | $ 210.00 | Reserved",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S10.png",
+    "executedAt": "2026-10-28T01:43:21.339Z"
+  },
+  "S12": {
+    "id": "S12",
+    "area": "Valid rental + calculation",
+    "title": "Create Active rental: Lucas Moreau / Pine Grove Cabin 24-Oct-2026 to 31-Oct-2026",
+    "expected": "Saved; 7 day(s) x rate = $665.00; reference RNT-#### generated",
+    "actual": "Saved. Form preview: 7 days, $665.00. Report row: RNT-0011 | Lucas Moreau | Pine Grove Cabin | 24-Oct-2026 | 31-Oct-2026 | 7 | $ 95.00 | $ 665.00 | Active",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S12.png",
+    "executedAt": "2026-10-28T01:43:41.497Z"
+  },
+  "C01": {
+    "id": "C01",
+    "area": "Property status sync",
+    "title": "Activating a rental marks the property as Rented",
+    "expected": "Harbor View Apartment 3B (S04 Active) = Rented; Seaside Loft 101 (no active rental) = Available",
+    "actual": "Harbor View = Rented; Seaside Loft = Available",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-C01.png",
+    "executedAt": "2026-10-28T01:43:50.310Z"
+  },
+  "N01": {
+    "id": "N01",
+    "area": "Required fields",
+    "title": "Submit an empty rental form",
+    "expected": "Rejected; Customer, Property, Start Date and End Date flagged as required",
+    "actual": "Invalid entries found\n\nRectify and submit again. | This field is mandatory. Select a value. ; This field is mandatory. Enter a value.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N01.png",
+    "executedAt": "2026-10-28T01:44:25.595Z"
+  },
+  "N02": {
+    "id": "N02",
+    "area": "Required fields",
+    "title": "Rental without a property",
+    "expected": "Rejected; Property flagged as required",
+    "actual": "Invalid entries found\n\nRectify and submit again. | This field is mandatory. Select a value.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N02.png",
+    "executedAt": "2026-10-28T01:45:07.248Z"
+  },
+  "N03": {
+    "id": "N03",
+    "area": "Invalid date range",
+    "title": "End date before start date (10-Nov to 05-Nov)",
+    "expected": "Rejected: \"End date must be later than the start date.\"; preview shows 0 days / $0.00",
+    "actual": "End date must be later than the start date. (preview 0 days, $0.00)",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N03.png",
+    "executedAt": "2026-10-28T01:45:51.504Z"
+  },
+  "N04": {
+    "id": "N04",
+    "area": "Boundary: dates",
+    "title": "End date equal to start date (0 days)",
+    "expected": "Rejected: \"End date must be later than the start date.\"",
+    "actual": "End date must be later than the start date. (preview 0 days, $0.00)",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N04.png",
+    "executedAt": "2026-10-28T01:46:35.581Z"
+  },
+  "N05": {
+    "id": "N05",
+    "area": "Boundary: dates",
+    "title": "366-day rental (01-Jan-2027 to 02-Jan-2028)",
+    "expected": "Rejected: \"A rental cannot be longer than 365 days.\"",
+    "actual": "A rental cannot be longer than 365 days. (preview 366 days)",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N05.png",
+    "executedAt": "2026-10-28T01:47:19.829Z"
+  },
+  "S13": {
+    "id": "S13",
+    "area": "Boundary: dates",
+    "title": "365-day rental (01-Jan-2027 to 01-Jan-2028) is accepted",
+    "expected": "Saved; 365 days x $210 = $76,650.00",
+    "actual": "Saved (preview 365 days, $76,650.00)",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S13.png",
+    "executedAt": "2026-10-28T01:47:34.261Z"
+  },
+  "N06": {
+    "id": "N06",
+    "area": "Overlapping bookings",
+    "title": "Partial overlap: Seaside Loft 08-Nov to 15-Nov (S06 holds 05-Nov to 12-Nov)",
+    "expected": "Rejected with \"Booking overlap\" naming the existing reservation",
+    "actual": "Booking overlap: Seaside Loft 101 is already booked from 05-Nov-2026 to 12-Nov-2026 (RNT-0006, Reserved).",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N06.png",
+    "executedAt": "2026-10-28T01:48:18.336Z"
+  },
+  "N07": {
+    "id": "N07",
+    "area": "Overlapping bookings",
+    "title": "Enclosing overlap: Seaside Loft 01-Nov to 20-Nov",
+    "expected": "Rejected with \"Booking overlap\"",
+    "actual": "Booking overlap: Seaside Loft 101 is already booked from 05-Nov-2026 to 12-Nov-2026 (RNT-0006, Reserved).",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N07.png",
+    "executedAt": "2026-10-28T01:49:02.586Z"
+  },
+  "N08": {
+    "id": "N08",
+    "area": "Overlapping bookings",
+    "title": "Identical dates: Harbor View 01-Nov to 04-Nov (S09 holds the same dates)",
+    "expected": "Rejected with \"Booking overlap\" naming S09 (01-Nov-2026 to 04-Nov-2026)",
+    "actual": "Booking overlap: Harbor View Apartment 3B is already booked from 01-Nov-2026 to 04-Nov-2026 (RNT-0009, Reserved).",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N08.png",
+    "executedAt": "2026-10-28T01:49:46.919Z"
+  },
+  "N09": {
+    "id": "N09",
+    "area": "Overlapping bookings",
+    "title": "Overlap with a reservation that will be cancelled: Downtown Studio 15-Nov to 18-Nov (S10)",
+    "expected": "Rejected with \"Booking overlap\" while S10 is Reserved",
+    "actual": "Booking overlap: Downtown Studio 5A is already booked from 15-Nov-2026 to 18-Nov-2026 (RNT-0010, Reserved).",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N09.png",
+    "executedAt": "2026-10-28T01:50:31.228Z"
+  },
+  "N10": {
+    "id": "N10",
+    "area": "Rental statuses",
+    "title": "Book a property under Maintenance (Lakeside House)",
+    "expected": "Rejected: \"Property Lakeside House is under maintenance and cannot be booked.\"",
+    "actual": "Property Lakeside House is under maintenance and cannot be booked.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N10.png",
+    "executedAt": "2026-10-28T01:51:15.395Z"
+  },
+  "N11": {
+    "id": "N11",
+    "area": "Rental statuses",
+    "title": "New reservation starting in the past (20-Oct-2026)",
+    "expected": "Rejected: \"A reservation cannot start in the past...\"",
+    "actual": "A reservation cannot start in the past. Record past rentals as Active or Completed.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N11.png",
+    "executedAt": "2026-10-28T01:51:59.662Z"
+  },
+  "N12": {
+    "id": "N12",
+    "area": "Rental statuses",
+    "title": "New rental as Active with a future start date",
+    "expected": "Rejected: \"A rental can only be Active once its start date ... has been reached.\"",
+    "actual": "A rental can only be Active once its start date (01-Dec-2026) has been reached.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N12.png",
+    "executedAt": "2026-10-28T01:52:45.768Z"
+  },
+  "N13": {
+    "id": "N13",
+    "area": "Rental statuses",
+    "title": "New rental as Completed with an end date in the future",
+    "expected": "Rejected: \"A rental can only be Completed on or after its end date...\"",
+    "actual": "A rental can only be Completed on or after its end date. To finish early, set the end date to today first.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N13.png",
+    "executedAt": "2026-10-28T01:53:31.725Z"
+  },
+  "N14": {
+    "id": "N14",
+    "area": "Rental statuses",
+    "title": "New rental created directly as Cancelled",
+    "expected": "Rejected: \"A new rental cannot be created as Cancelled.\"",
+    "actual": "A new rental cannot be created as Cancelled.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-N14.png",
+    "executedAt": "2026-10-28T01:54:17.846Z"
+  },
+  "E01": {
+    "id": "E01",
+    "area": "Status transitions",
+    "title": "Completed -> Active (S01)",
+    "expected": "Rejected: \"Invalid status change: Completed to Active...\"",
+    "actual": "Invalid status change: Completed to Active. Allowed: Reserved to Active or Cancelled, Active to Completed. Completed and Cancelled are final.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-E01.png",
+    "executedAt": "2026-10-28T01:54:58.709Z"
+  },
+  "E02": {
+    "id": "E02",
+    "area": "Status transitions",
+    "title": "Reserved -> Active before the start date (S06, starts 05-Nov)",
+    "expected": "Rejected: \"A rental can only be Active once its start date (05-Nov-2026) has been reached.\"",
+    "actual": "A rental can only be Active once its start date (05-Nov-2026) has been reached.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-E02.png",
+    "executedAt": "2026-10-28T01:55:39.399Z"
+  },
+  "E03": {
+    "id": "E03",
+    "area": "Status transitions",
+    "title": "Change the dates of a Completed rental (S02)",
+    "expected": "Rejected: \"Completed rentals are locked. Only the notes can be edited.\"",
+    "actual": "Completed rentals are locked. Only the notes can be edited.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-E03.png",
+    "executedAt": "2026-10-28T01:56:20.386Z"
+  },
+  "E04": {
+    "id": "E04",
+    "area": "Status transitions",
+    "title": "Reserved -> Cancelled (S10)",
+    "expected": "Saved; S10 shows Cancelled",
+    "actual": "Edit submitted in run 1 (automation lost the page on the post-save redirect); outcome verified in the live report. RNT-0010 status = Cancelled",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\verify-all-rentals.png",
+    "executedAt": "2026-10-28T02:03:54.151Z"
+  },
+  "S11": {
+    "id": "S11",
+    "area": "Overlapping bookings",
+    "title": "Cancelled reservations free their dates: Downtown Studio 15-Nov to 18-Nov again",
+    "expected": "Saved (S10 is now Cancelled); 3 days x $70 = $210.00",
+    "actual": "Saved (preview 3 days, $210.00)",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-S11.png",
+    "executedAt": "2026-10-28T01:56:47.019Z"
+  },
+  "E05": {
+    "id": "E05",
+    "area": "Status transitions",
+    "title": "Reserved -> Cancelled for the 365-day booking (S13)",
+    "expected": "Saved; excluded from Booked Revenue",
+    "actual": "Edit submitted in run 1 (automation lost the page on the post-save redirect); outcome verified in the live report. RNT-0012 status = Cancelled",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\verify-all-rentals.png",
+    "executedAt": "2026-10-28T02:03:54.153Z"
+  },
+  "E06": {
+    "id": "E06",
+    "area": "Status transitions",
+    "title": "Active -> Completed before the end date (S05 ends 30-Oct)",
+    "expected": "Rejected: \"A rental can only be Completed on or after its end date. To finish early, set the end date to today first.\"",
+    "actual": "A rental can only be Completed on or after its end date. To finish early, set the end date to today first.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-E06.png",
+    "executedAt": "2026-10-28T01:57:40.010Z"
+  },
+  "E07": {
+    "id": "E07",
+    "area": "Status transitions",
+    "title": "Early check-out: S05 end date -> 27-Oct-2026 (today) and Active -> Completed",
+    "expected": "Saved; recalculated to 1 day x $210 = $210.00; Garden House returns to Available",
+    "actual": "Edit submitted in run 1 (automation lost the page on the post-save redirect); outcome verified in the live report. RNT-0005 | Hana Sato | Garden House | 26-Oct-2026 | 27-Oct-2026 | 1 | $ 210.00 | $ 210.00 | Completed; Garden House = Available",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\verify-all-rentals.png",
+    "executedAt": "2026-10-28T02:03:54.153Z"
+  },
+  "P01": {
+    "id": "P01",
+    "area": "Property validation",
+    "title": "Property with a daily rate of 0",
+    "expected": "Rejected: \"Daily rental rate must be greater than zero.\"",
+    "actual": "Daily rental rate must be greater than zero.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-P01.png",
+    "executedAt": "2026-10-28T01:58:35.633Z"
+  },
+  "P02": {
+    "id": "P02",
+    "area": "Property validation",
+    "title": "Set a property with an active rental to Maintenance (Harbor View, S04 Active)",
+    "expected": "Rejected: \"This property has an active rental, so its status stays Rented...\"",
+    "actual": "This property has an active rental, so its status stays Rented until the rental is completed.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-P02.png",
+    "executedAt": "2026-10-28T01:59:16.227Z"
+  },
+  "P03": {
+    "id": "P03",
+    "area": "Property validation",
+    "title": "Manually set a property without active rentals to Rented (Seaside Loft 101)",
+    "expected": "Rejected: \"Rented is set automatically when a rental becomes Active...\"",
+    "actual": "Rented is set automatically when a rental becomes Active. Choose Available or Maintenance.",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-P03.png",
+    "executedAt": "2026-10-28T01:59:57.179Z"
+  },
+  "R01": {
+    "id": "R01",
+    "area": "Calculation: rate snapshot",
+    "title": "Raising a property rate does not change existing rentals",
+    "expected": "Downtown Studio 5A rate 70 -> 80 saved; S07 keeps $70.00; rate restored to 70",
+    "actual": "rate->80 saved; S07 daily rate $ 70.00, total $ 70.00; rate->70 saved",
+    "status": "PASS",
+    "evidence": null,
+    "executedAt": "2026-10-28T02:07:20.642Z"
+  },
+  "U01": {
+    "id": "U01",
+    "area": "Required fields / uniqueness",
+    "title": "Customer with a duplicate email (olivia.bennett@example.com)",
+    "expected": "Rejected by the unique-field rule on Email",
+    "actual": "Invalid entries found\n\nRectify and submit again. | ",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-U01.png",
+    "executedAt": "2026-10-28T02:00:45.548Z"
+  },
+  "U02": {
+    "id": "U02",
+    "area": "Required fields / uniqueness",
+    "title": "Customer with an invalid email format",
+    "expected": "Rejected by the Email field validation",
+    "actual": "Invalid entries found\n\nRectify and submit again. | ",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-U02.png",
+    "executedAt": "2026-10-28T02:01:22.791Z"
+  },
+  "L01": {
+    "id": "L01",
+    "area": "Booking email",
+    "title": "A new booking sends the confirmation email (copy to the owner)",
+    "expected": "RNT-0015 saved; confirmation email to the customer with a copy to the owner's inbox",
+    "actual": "RNT-0015 saved; Deal created. Waiting for the owner to confirm the email copy arrived.",
+    "status": "NOT_EXECUTED",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\lost-L01-saved.png",
+    "executedAt": "2026-10-28T19:47:35.314Z"
+  },
+  "L02": {
+    "id": "L02",
+    "area": "Zoho CRM integration",
+    "title": "Marking the Deal Closed Lost in CRM cancels the rental in Creator",
+    "expected": "RNT-0015: Reserved → Cancelled",
+    "actual": "RNT-0015: Cancelled",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\lost-L02-creator.png",
+    "executedAt": "2026-10-28T20:01:42.834Z"
+  },
+  "K01": {
+    "id": "K01",
+    "area": "Dashboard KPIs",
+    "title": "Dashboard KPIs match the data",
+    "expected": "Active 2, Upcoming 5, Available Properties 3, Customers 6, Realized $1,925.00, Booked $3,950.00",
+    "actual": "{\"active\":\"2\",\"upcoming\":\"5\",\"available\":\"3\",\"customers\":\"6\",\"realized\":\"$ 1,925.00\",\"booked\":\"$ 3,950.00\"}",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\test-K01.png",
+    "executedAt": "2026-10-28T02:06:10.458Z"
+  },
+  "E08": {
+    "id": "E08",
+    "area": "Status transitions",
+    "title": "Edit only the Notes of Cancelled rentals (RNT-0012, RNT-0010)",
+    "expected": "Saved: notes remain editable on locked records (R4f)",
+    "actual": "Both updates answered \"Data updated Successfully!\" (automation/tidy-notes.mjs); the new notes appear in the All Rentals report",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\screenshots\\04-all-rentals.png",
+    "executedAt": "2026-10-28T02:10:46.458Z"
+  },
+  "I01": {
+    "id": "I01",
+    "area": "Zoho CRM integration",
+    "title": "Saving a rental stores the CRM Deal ID on the record",
+    "expected": "Rental saves; CRM Deal ID filled automatically",
+    "actual": "Rental saved successfully.; RNT-0014; CRM Deal ID = 7651551000000728001",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\crm-C01-form.png",
+    "executedAt": "2026-10-28T18:43:39.769Z"
+  },
+  "I02": {
+    "id": "I02",
+    "area": "Zoho CRM integration",
+    "title": "The Deal appears in Zoho CRM with the rental data",
+    "expected": "Deal \"RNT-0014 - Downtown Studio 5A\", Amount $210, Stage Negotiation/Review, Account and Contact Sophie Laurent",
+    "actual": "Deal \"RNT-0014 - Downtown Studio 5A\" found: $210, Negotiation/Review, linked to Sophie Laurent",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\crm-C02-deal.png",
+    "executedAt": "2026-10-28T18:43:49.622Z"
+  },
+  "I03": {
+    "id": "I03",
+    "area": "Zoho CRM integration",
+    "title": "Changing the rental status updates the same Deal's stage",
+    "expected": "Status Cancelled → same Deal moves to Closed Lost",
+    "actual": "updated successfully; Deal ID unchanged; stage Closed Lost",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\crm-C03-deal.png",
+    "executedAt": "2026-10-28T18:44:20.183Z"
+  },
+  "B01": {
+    "id": "B01",
+    "area": "Zoho Books integration",
+    "title": "Saving a Completed rental creates a Zoho Books invoice and stores its number",
+    "expected": "All 4 Completed rentals get an Invoice No.",
+    "actual": "RNT-0005: INV-000001; RNT-0003: INV-000002; RNT-0001: INV-000003; RNT-0002: INV-000004",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\books-B01-form.png",
+    "executedAt": "2026-10-28T19:36:00.036Z"
+  },
+  "B02": {
+    "id": "B02",
+    "area": "Zoho Books integration",
+    "title": "An invoiced rental is not invoiced twice",
+    "expected": "RNT-0005 keeps INV-000001",
+    "actual": "RNT-0005: INV-000001",
+    "status": "PASS",
+    "evidence": null,
+    "executedAt": "2026-10-28T19:36:15.439Z"
+  },
+  "B03": {
+    "id": "B03",
+    "area": "Zoho Books integration",
+    "title": "A Reserved rental is not invoiced",
+    "expected": "RNT-0006 (Reserved) has no Invoice No. after saving",
+    "actual": "RNT-0006: (none)",
+    "status": "PASS",
+    "evidence": null,
+    "executedAt": "2026-10-28T19:36:29.171Z"
+  },
+  "B04": {
+    "id": "B04",
+    "area": "Zoho Books integration",
+    "title": "The invoices appear in Zoho Books",
+    "expected": "Each invoice number is listed in Zoho Books → Invoices",
+    "actual": "4 invoices listed in Zoho Books",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\books-invoices.png",
+    "executedAt": "2026-10-28T19:36:42.766Z"
+  },
+  "L03": {
+    "id": "L03",
+    "area": "Zoho CRM integration",
+    "title": "The Deal gets a note from the sync",
+    "expected": "Note \"Rental RNT-0015 was cancelled in Zoho Creator…\" on the Deal",
+    "actual": "note present on the Deal",
+    "status": "PASS",
+    "evidence": "C:\\Users\\gonza\\Desktop\\zohoportfolio\\automation\\out\\lost-L03-note.png",
+    "executedAt": "2026-10-28T20:01:52.452Z"
+  }
+}

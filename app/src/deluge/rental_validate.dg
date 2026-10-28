@@ -1,0 +1,164 @@
+// Rentals - On Validate (add and edit).
+// Server-side source of truth: every rule below runs on each save, so values
+// typed in the browser or sent through the API cannot bypass it.
+errors = List();
+today = zoho.currentdate;
+currentId = ifnull(input.ID,0);
+oldRec = Rentals[ID == currentId];
+isNew = oldRec.count() == 0;
+oldStatus = "";
+if(!isNew)
+{
+	oldStatus = oldRec.Rental_Status;
+}
+newStatus = ifnull(input.Rental_Status,"");
+// R1 - Required fields (also enforced by the form's mandatory flags)
+if(input.Customer == null)
+{
+	errors.add("Customer is required.");
+}
+if(input.Property == null)
+{
+	errors.add("Property is required.");
+}
+if(input.Start_Date == null)
+{
+	errors.add("Start date is required.");
+}
+if(input.End_Date == null)
+{
+	errors.add("End date is required.");
+}
+if(newStatus == "")
+{
+	errors.add("Rental status is required.");
+}
+// R2 - Lookups must point to existing records
+if(input.Customer != null)
+{
+	if(Customers[ID == input.Customer].count() == 0)
+	{
+		errors.add("The selected customer does not exist.");
+	}
+}
+propertyName = "";
+propertyStatus = "";
+propertyRate = 0;
+if(input.Property != null)
+{
+	prop = Properties[ID == input.Property];
+	if(prop.count() == 0)
+	{
+		errors.add("The selected property does not exist.");
+	}
+	else
+	{
+		propertyName = prop.Property_Name;
+		propertyStatus = prop.Availability_Status;
+		propertyRate = prop.Daily_Rate;
+	}
+}
+// R3 - Date range
+if(input.Start_Date != null && input.End_Date != null)
+{
+	if(input.End_Date <= input.Start_Date)
+	{
+		errors.add("End date must be later than the start date.");
+	}
+	else if(input.Start_Date.daysBetween(input.End_Date) > 365)
+	{
+		errors.add("A rental cannot be longer than 365 days.");
+	}
+}
+// R4 - Status rules
+propertyChanged = true;
+if(isNew)
+{
+	if(newStatus == "Cancelled")
+	{
+		errors.add("A new rental cannot be created as Cancelled.");
+	}
+	if(newStatus == "Reserved" && input.Start_Date != null)
+	{
+		if(input.Start_Date < today)
+		{
+			errors.add("A reservation cannot start in the past. Record past rentals as Active or Completed.");
+		}
+	}
+}
+else
+{
+	propertyChanged = input.Property != oldRec.Property;
+	allowed = Map();
+	allowed.put("Reserved",{"Reserved","Active","Cancelled"});
+	allowed.put("Active",{"Active","Completed"});
+	allowed.put("Completed",{"Completed"});
+	allowed.put("Cancelled",{"Cancelled"});
+	nextStatuses = allowed.get(oldStatus);
+	if(nextStatuses != null)
+	{
+		if(!nextStatuses.contains(newStatus))
+		{
+			errors.add("Invalid status change: " + oldStatus + " to " + newStatus + ". Allowed: Reserved to Active or Cancelled, Active to Completed. Completed and Cancelled are final.");
+		}
+	}
+	if(oldStatus == "Completed" || oldStatus == "Cancelled")
+	{
+		if(input.Customer != oldRec.Customer || input.Property != oldRec.Property || input.Start_Date != oldRec.Start_Date || input.End_Date != oldRec.End_Date)
+		{
+			errors.add(oldStatus + " rentals are locked. Only the notes can be edited.");
+		}
+	}
+	else if(oldStatus == "Active")
+	{
+		if(input.Customer != oldRec.Customer || input.Property != oldRec.Property || input.Start_Date != oldRec.Start_Date)
+		{
+			errors.add("The customer, property and start date of an active rental cannot be changed.");
+		}
+	}
+}
+if((isNew || newStatus != oldStatus) && input.Start_Date != null && input.End_Date != null)
+{
+	if(newStatus == "Active" && input.Start_Date > today)
+	{
+		errors.add("A rental can only be Active once its start date (" + input.Start_Date.toString("dd-MMM-yyyy") + ") has been reached.");
+	}
+	if(newStatus == "Completed" && input.End_Date > today)
+	{
+		errors.add("A rental can only be Completed on or after its end date. To finish early, set the end date to today first.");
+	}
+}
+// R5 - Properties under maintenance cannot take new bookings
+if(propertyChanged && propertyStatus == "Maintenance" && (newStatus == "Reserved" || newStatus == "Active"))
+{
+	errors.add("Property " + propertyName + " is under maintenance and cannot be booked.");
+}
+// R6 - No overlapping bookings for the same property.
+// Half-open ranges [start, end): a new rental may start on another rental's end date.
+if(errors.isEmpty() && newStatus != "Cancelled")
+{
+	clashes = Rentals[Property == input.Property && ID != currentId && Rental_Status != "Cancelled" && Start_Date < input.End_Date && End_Date > input.Start_Date] sort by Start_Date;
+	if(clashes.count() > 0)
+	{
+		errors.add("Booking overlap: " + propertyName + " is already booked from " + clashes.Start_Date.toString("dd-MMM-yyyy") + " to " + clashes.End_Date.toString("dd-MMM-yyyy") + " (" + clashes.Rental_Reference + ", " + clashes.Rental_Status + ").");
+	}
+}
+if(errors.size() > 0)
+{
+	alert errors.toString("\n");
+	cancel submit;
+}
+else
+{
+	// C1 - Daily rate is a snapshot: taken from the property on create or when the
+	// property changes, otherwise kept from the saved record.
+	rate = propertyRate;
+	if(!propertyChanged)
+	{
+		rate = oldRec.Daily_Rate;
+	}
+	input.Daily_Rate = rate;
+	calc = thisapp.RentalLogic.calculate(input.Start_Date,input.End_Date,input.Daily_Rate);
+	input.Number_of_Days = calc.get("days");
+	input.Total_Cost = calc.get("total");
+}

@@ -1,0 +1,19 @@
+{
+  "_note": "Entirely fictional sample data. Emails use the reserved example.com domain and phone numbers use the reserved 555-01xx fictional range.",
+  "customers": [
+    { "name": "Olivia Bennett", "email": "olivia.bennett@example.com", "phone": "+12025550143", "idRef": "CUS-ID-1001" },
+    { "name": "Mateo Fernandez", "email": "mateo.fernandez@example.com", "phone": "+12025550178", "idRef": "CUS-ID-1002" },
+    { "name": "Sophie Laurent", "email": "sophie.laurent@example.com", "phone": "+12025550110", "idRef": "CUS-ID-1003" },
+    { "name": "Daniel Okafor", "email": "daniel.okafor@example.com", "phone": "+12025550192", "idRef": "CUS-ID-1004" },
+    { "name": "Hana Sato", "email": "hana.sato@example.com", "phone": "+12025550125", "idRef": "CUS-ID-1005" },
+    { "name": "Lucas Moreau", "email": "lucas.moreau@example.com", "phone": "+12025550167", "idRef": "CUS-ID-1006" }
+  ],
+  "properties": [
+    { "name": "Seaside Loft 101", "type": "Loft", "line1": "1450 Seaside Avenue, Unit 101", "city": "Miramar", "state": "Buenos Aires", "zip": "7607", "rate": "120", "status": "Available", "description": "Open-plan loft one block from the beach. Sleeps 2." },
+    { "name": "Pine Grove Cabin", "type": "Cabin", "line1": "22 Pine Grove Road", "city": "Miramar", "state": "Buenos Aires", "zip": "7607", "rate": "95", "status": "Available", "description": "Wooden cabin in the pine forest with fireplace. Sleeps 4." },
+    { "name": "Harbor View Apartment 3B", "type": "Apartment", "line1": "310 Harbor Street, Floor 3B", "city": "Mar del Plata", "state": "Buenos Aires", "zip": "7600", "rate": "150", "status": "Available", "description": "Two-bedroom apartment with harbor views. Sleeps 4." },
+    { "name": "Downtown Studio 5A", "type": "Studio", "line1": "77 Central Plaza, Floor 5A", "city": "Mar del Plata", "state": "Buenos Aires", "zip": "7600", "rate": "70", "status": "Available", "description": "Compact studio close to shops and transport. Sleeps 2." },
+    { "name": "Garden House", "type": "House", "line1": "9 Garden Lane", "city": "Necochea", "state": "Buenos Aires", "zip": "7630", "rate": "210", "status": "Available", "description": "Three-bedroom family house with garden and grill. Sleeps 6." },
+    { "name": "Lakeside House", "type": "House", "line1": "41 Lakeside Drive", "city": "Necochea", "state": "Buenos Aires", "zip": "7630", "rate": "180", "status": "Maintenance", "description": "Lake-front house. Currently closed for roof repairs." }
+  ]
+}

@@ -1,0 +1,23 @@
+// Rentals - On Success (add and edit).
+// Human-readable reference, generated once from the autonumber: RNT-0001.
+// No reference yet = first save, i.e. a new booking.
+isNewBooking = input.Rental_Reference == null || input.Rental_Reference == "";
+if(isNewBooking)
+{
+	input.Rental_Reference = "RNT-" + input.Rental_No.toString().leftPad(4).replaceAll(" ","0");
+}
+// Keep the property's availability in sync with its active rentals.
+// Maintenance is a manual status and is never overwritten here.
+prop = Properties[ID == input.Property];
+if(prop.count() > 0)
+{
+	activeCount = Rentals[Property == input.Property && Rental_Status == "Active"].count();
+	if(activeCount > 0 && prop.Availability_Status == "Available")
+	{
+		prop.Availability_Status = "Rented";
+	}
+	else if(activeCount == 0 && prop.Availability_Status == "Rented")
+	{
+		prop.Availability_Status = "Available";
+	}
+}

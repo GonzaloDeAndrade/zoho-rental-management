@@ -1,0 +1,47 @@
+// Zoho CRM function: Rental_Deal_Closed_Lost(dealId)
+// Called by the CRM workflow rule "Rental deal lost" (Deals, when Stage is modified to Closed Lost).
+// Cancels the matching rental in Zoho Creator, so a deal lost in CRM frees the property dates.
+// Only Reserved rentals can be cancelled (the Creator status rules apply to API updates too).
+// The outcome is written as a note on the deal.
+owner = "gonzadeandrade1";
+app = "rental-management";
+response = zoho.creator.getRecords(owner,app,"All_Rentals","(CRM_Deal_ID == \"" + dealId + "\")",1,1,"creatorrentals");
+if(response.get("code") != 3000 || response.get("data").size() == 0)
+{
+	// Not a rental deal (for example, a deal created by hand in CRM).
+	return;
+}
+rental = response.get("data").get(0);
+reference = rental.get("Rental_Reference");
+status = rental.get("Rental_Status");
+if(status == "Cancelled")
+{
+	// Already cancelled in Creator; the stage change came from Creator's own sync.
+	return;
+}
+if(status == "Reserved")
+{
+	changes = Map();
+	changes.put("Rental_Status","Cancelled");
+	changes.put("Notes",ifnull(rental.get("Notes"),"") + " Cancelled from Zoho CRM: deal marked Closed Lost.");
+	update = zoho.creator.updateRecord(owner,app,"All_Rentals",rental.get("ID").toLong(),changes,Map(),"creatorrentals");
+	if(update.get("code") == 3000)
+	{
+		noteText = "Rental " + reference + " was cancelled in Zoho Creator because this deal was marked Closed Lost. The property dates are free again.";
+	}
+	else
+	{
+		noteText = "Rental " + reference + " could not be cancelled in Zoho Creator: " + update;
+	}
+}
+else
+{
+	noteText = "Rental " + reference + " is " + status + " in Zoho Creator, so it was not cancelled. Only reserved bookings can be cancelled from CRM.";
+}
+note = Map();
+note.put("Parent_Id",dealId);
+note.put("se_module","Deals");
+note.put("Note_Title","Zoho Creator sync");
+note.put("Note_Content",noteText);
+zoho.crm.createRecord("Notes",note);
+info noteText;

@@ -1,0 +1,890 @@
+/*
+ * Rental Management - Zoho Creator application
+ * Portfolio project by Gonzalo de Andrade
+ * Built from app/src/RentalManagement.template.ds by app/build.mjs
+ */
+ application "Rental Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Argentina/Buenos_Aires"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Customers
+		{
+			displayname = "Customer"
+			success message = "Customer saved successfully."
+			field alignment = left
+			Customer_Section
+			(
+				type = section
+				displayname = "Customer Details"
+	 			row = 1
+	 			column = 0
+				width = medium
+			)
+			must have Customer_Name
+			(
+    			type = text
+				displayname = "Customer Name"
+				maxchar = 100
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have unique Email
+			(
+    			type = email
+				displayname = "Email"
+				maxchar = 100
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Phone
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have unique ID_Reference
+			(
+    			type = text
+				displayname = "Identification Reference"
+				maxchar = 30
+    			description
+    			[
+    				type = help_text
+    			 	message = "Internal ID reference (fictional data only), e.g. CUS-ID-1001."
+    			]
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Save Customer"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Properties
+		{
+			displayname = "Property"
+			success message = "Property saved successfully."
+			field alignment = left
+			Property_Section
+			(
+				type = section
+				displayname = "Property Details"
+	 			row = 1
+	 			column = 0
+				width = medium
+			)
+			must have unique Property_Name
+			(
+    			type = text
+				displayname = "Property Name / Reference"
+				maxchar = 100
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Address
+			(
+    			type = address
+				displayname = "Address"
+     			capture_coordinates = false
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			)
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			)
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			)
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			)
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			)
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			)
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			)
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			)
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Property_Type
+			(
+				type = picklist
+				displayname = "Property Type"
+				values = {"Apartment","House","Studio","Loft","Cabin"}
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Daily_Rate
+			(
+				displayname = "Daily Rental Rate"
+				type = USD
+				format = commadotwestern
+				initial value = 0.00
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Availability_Status
+			(
+				type = picklist
+				displayname = "Availability Status"
+				values = {"Available","Rented","Maintenance"}
+				initial value = "Available"
+    			description
+    			[
+    				type = help_text
+    			 	message = "Set automatically to Rented / Available by active rentals. Set Maintenance manually to block new bookings."
+    			]
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				displayname = "Description"
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Save Property"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Rentals
+		{
+			displayname = "Rental"
+			success message = "Rental saved successfully."
+			field alignment = left
+			Rental_Section
+			(
+				type = section
+				displayname = "Rental Details"
+	 			row = 1
+	 			column = 0
+				width = medium
+			)
+			Rental_No
+			(
+				type = autonumber
+				displayname = "Rental No."
+				start index = 1
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			Rental_Reference
+			(
+    			type = text
+				displayname = "Rental Reference"
+				maxchar = 20
+    			description
+    			[
+    				type = help_text
+    			 	message = "Generated automatically after saving (RNT-0001)."
+    			]
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Customer
+			(
+				type = picklist
+				displayname = "Customer"
+				values  = Customers.ID
+    			displayformat = [Customer_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Property
+			(
+				type = picklist
+				displayname = "Property"
+				values  = Properties.ID
+    			displayformat = [Property_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have Start_Date
+			(
+    			type = date
+				displayname = "Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			must have End_Date
+			(
+    			type = date
+				displayname = "End Date"
+				alloweddays = 0,1,2,3,4,5,6
+    			description
+    			[
+    				type = help_text
+    			 	message = "Check-out date. Must be later than the start date."
+    			]
+	 			row = 1
+	 			column = 1
+				width = medium
+			)
+			Number_of_Days
+			(
+				type = number
+				displayname = "Number of Days"
+				initial value = 0
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			Daily_Rate
+			(
+				displayname = "Daily Rate"
+				type = USD
+				format = commadotwestern
+				initial value = 0.00
+    			description
+    			[
+    				type = help_text
+    			 	message = "Copied from the property when the rental is created."
+    			]
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			Total_Cost
+			(
+				displayname = "Total Cost"
+				type = USD
+				format = commadotwestern
+				initial value = 0.00
+    			description
+    			[
+    				type = help_text
+    			 	message = "Calculated automatically: Number of Days x Daily Rate."
+    			]
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			must have Rental_Status
+			(
+				type = picklist
+				displayname = "Rental Status"
+				values = {"Reserved","Active","Completed","Cancelled"}
+				initial value = "Reserved"
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			Notes
+			(
+    			type = textarea
+				displayname = "Notes"
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			CRM_Deal_ID
+			(
+    			type = text
+				displayname = "CRM Deal ID"
+				maxchar = 30
+    			description
+    			[
+    				type = help_text
+    			 	message = "Filled automatically when the rental is synced to Zoho CRM as a Deal."
+    			]
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+			Books_Invoice_No
+			(
+    			type = text
+				displayname = "Invoice No."
+				maxchar = 30
+    			description
+    			[
+    				type = help_text
+    			 	message = "Zoho Books invoice, created automatically when the rental is completed."
+    			]
+	 			row = 1
+	 			column = 2
+				width = medium
+			)
+
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Save Rental"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Customers
+		{
+			displayName = "Customers"
+			show all rows from Customers
+			(
+				Customer_Name as "Customer Name"
+				Email as "Email"
+				Phone as "Phone"
+				ID_Reference as "Identification Reference"
+			)
+			sort by
+			(
+				Customer_Name ascending
+			)
+		}
+		default list All_Properties
+		{
+			displayName = "All Properties"
+			show all rows from Properties
+			(
+				Property_Name as "Property"
+				Property_Type as "Type"
+				Address as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	 			)
+				Daily_Rate as "Daily Rate"
+				Availability_Status as "Availability"
+				Description as "Description"
+			)
+			sort by
+			(
+				Property_Name ascending
+			)
+			conditional formatting
+			(
+				"Available"
+				{
+				condition = (Availability_Status == "Available")
+				fields = [Availability_Status]
+				format = "color:#0b6b3a;background-color:#d9f2e3;"
+				}
+				"Rented"
+				{
+				condition = (Availability_Status == "Rented")
+				fields = [Availability_Status]
+				format = "color:#1d4f91;background-color:#dde8f8;"
+				}
+				"Maintenance"
+				{
+				condition = (Availability_Status == "Maintenance")
+				fields = [Availability_Status]
+				format = "color:#8a4b00;background-color:#fbe9d0;"
+				}
+			)
+		}
+		list Available_Properties
+		{
+			displayName = "Available Properties"
+			show all rows from Properties [Availability_Status == "Available"]
+			(
+				Property_Name as "Property"
+				Property_Type as "Type"
+				Address as "Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	 			)
+				Daily_Rate as "Daily Rate"
+				Description as "Description"
+			)
+			sort by
+			(
+				Daily_Rate ascending
+			)
+		}
+		default list All_Rentals
+		{
+			displayName = "All Rentals"
+			show all rows from Rentals
+			(
+				Rental_Reference as "Reference"
+				Customer as "Customer"
+				Property as "Property"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Number_of_Days as "Days"
+				Daily_Rate as "Daily Rate"
+				Total_Cost as "Total Cost"
+				Rental_Status as "Status"
+				Notes as "Notes"
+			)
+			sort by
+			(
+				Start_Date descending
+			)
+__STATUS_FORMATTING__
+		}
+		list Active_Rentals
+		{
+			displayName = "Active Rentals"
+			show all rows from Rentals [Rental_Status == "Active"]
+			(
+				Rental_Reference as "Reference"
+				Customer as "Customer"
+				Property as "Property"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Number_of_Days as "Days"
+				Total_Cost as "Total Cost"
+				Rental_Status as "Status"
+			)
+			sort by
+			(
+				End_Date ascending
+			)
+		}
+		list Upcoming_Rentals
+		{
+			displayName = "Upcoming Rentals"
+			show all rows from Rentals [Rental_Status == "Reserved"]
+			(
+				Rental_Reference as "Reference"
+				Customer as "Customer"
+				Property as "Property"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Number_of_Days as "Days"
+				Total_Cost as "Total Cost"
+				Rental_Status as "Status"
+			)
+			sort by
+			(
+				Start_Date ascending
+			)
+		}
+		list Completed_Rentals
+		{
+			displayName = "Completed Rentals"
+			show all rows from Rentals [Rental_Status == "Completed"]
+			(
+				Rental_Reference as "Reference"
+				Customer as "Customer"
+				Property as "Property"
+				Start_Date as "Start Date"
+				End_Date as "End Date"
+				Number_of_Days as "Days"
+				Daily_Rate as "Daily Rate"
+				Total_Cost as "Total Cost"
+			)
+			sort by
+			(
+				End_Date descending
+			)
+		}
+	}
+	pages
+	{
+		page Dashboard
+		{
+			displayname = "Dashboard"
+			Content="__DASHBOARD_ZML__"
+		}
+	}
+		 functions
+		 {
+			 Deluge
+			 {
+				 map RentalLogic.calculate(date startDate, date endDate, decimal dailyRate)
+         {
+         	// Single source of truth for duration and price.
+         	// Days = nights between start and end (end date is the check-out day).
+         	result = Map();
+         	days = 0;
+         	if(startDate != null && endDate != null && endDate > startDate)
+         	{
+         		days = startDate.daysBetween(endDate);
+         	}
+         	rate = ifnull(dailyRate,0);
+         	result.put("days",days);
+         	result.put("total",(days * rate).round(2));
+         	return result;
+         }
+			 }
+		 }
+
+		workflow
+		{
+		form
+		{
+			Rental_Field_Setup as "Rental - Field setup"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on load
+				{
+					actions
+					{
+						custom deluge script
+						(
+							disable Rental_Reference;
+							disable Number_of_Days;
+							disable Daily_Rate;
+							disable Total_Cost;
+							disable CRM_Deal_ID;
+							disable Books_Invoice_No;
+							if(input.Rental_Reference == null || input.Rental_Reference == "")
+							{
+								hide Rental_Reference;
+							}
+							if(input.CRM_Deal_ID == null || input.CRM_Deal_ID == "")
+							{
+								hide CRM_Deal_ID;
+							}
+							if(input.Books_Invoice_No == null || input.Books_Invoice_No == "")
+							{
+								hide Books_Invoice_No;
+							}
+						)
+					}
+				}
+
+			}
+			Rental_Property_Selected as "Rental - Property selected"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on user input of Property
+				{
+					actions
+					{
+						custom deluge script
+						(
+							if(input.Property != null)
+							{
+								prop = Properties[ID == input.Property];
+								input.Daily_Rate = prop.Daily_Rate;
+							}
+							else
+							{
+								input.Daily_Rate = 0;
+							}
+							calc = thisapp.RentalLogic.calculate(input.Start_Date,input.End_Date,input.Daily_Rate);
+							input.Number_of_Days = calc.get("days");
+							input.Total_Cost = calc.get("total");
+						)
+					}
+				}
+
+			}
+			Rental_Start_Date_Changed as "Rental - Start date changed"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on user input of Start_Date
+				{
+					actions
+					{
+						custom deluge script
+						(
+							calc = thisapp.RentalLogic.calculate(input.Start_Date,input.End_Date,input.Daily_Rate);
+							input.Number_of_Days = calc.get("days");
+							input.Total_Cost = calc.get("total");
+						)
+					}
+				}
+
+			}
+			Rental_End_Date_Changed as "Rental - End date changed"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on user input of End_Date
+				{
+					actions
+					{
+						custom deluge script
+						(
+							calc = thisapp.RentalLogic.calculate(input.Start_Date,input.End_Date,input.Daily_Rate);
+							input.Number_of_Days = calc.get("days");
+							input.Total_Cost = calc.get("total");
+						)
+					}
+				}
+
+			}
+			Rental_Validation as "Rental - Validate and calculate"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on validate
+				{
+					actions
+					{
+						custom deluge script
+						(
+__RENTAL_VALIDATE__
+						)
+					}
+				}
+
+			}
+			Rental_After_Save as "Rental - Reference and property status"
+			{
+				type =  form
+				form = Rentals
+				record event = on add or edit
+
+				on success
+				{
+					actions
+					{
+						custom deluge script
+						(
+__RENTAL_SUCCESS__
+						)
+					}
+				}
+
+			}
+			Property_Validation as "Property - Validate"
+			{
+				type =  form
+				form = Properties
+				record event = on add or edit
+
+				on validate
+				{
+					actions
+					{
+						custom deluge script
+						(
+__PROPERTY_VALIDATE__
+						)
+					}
+				}
+
+			}
+		}
+		}
+	web
+	{
+		menu
+		{
+			space Space
+			{
+				displayname = "Rental Management"
+				icon = "objects-spaceship"
+
+				section Dashboard
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page Dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Rentals_Section
+				{
+					displayname = "Rentals"
+					icon = "travel-calendar-date"
+					form  Rentals
+					{
+						icon = "ui-2-square-add-11"
+					}
+					report All_Rentals
+					{
+						icon = "tech-desktop"
+					}
+					report Active_Rentals
+					{
+						icon = "tech-desktop"
+					}
+					report Upcoming_Rentals
+					{
+						icon = "tech-desktop"
+					}
+					report Completed_Rentals
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Properties_Section
+				{
+					displayname = "Properties"
+					icon = "shopping-shop-location"
+					form  Properties
+					{
+						icon = "ui-2-square-add-11"
+					}
+					report All_Properties
+					{
+						icon = "tech-desktop"
+					}
+					report Available_Properties
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customers_Section
+				{
+					displayname = "Customers"
+					icon = "users-2-contacts-44"
+					form  Customers
+					{
+						icon = "ui-2-square-add-11"
+					}
+					report All_Customers
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 6
+			font = "lato"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+}

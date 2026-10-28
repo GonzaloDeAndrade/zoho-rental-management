@@ -1,0 +1,24 @@
+// Properties - On Validate (add and edit).
+errors = List();
+if(input.Daily_Rate == null || input.Daily_Rate <= 0)
+{
+	errors.add("Daily rental rate must be greater than zero.");
+}
+else if(input.Daily_Rate > 100000)
+{
+	errors.add("Daily rental rate cannot exceed 100,000.");
+}
+activeCount = Rentals[Property == ifnull(input.ID,0) && Rental_Status == "Active"].count();
+if(activeCount > 0 && input.Availability_Status != "Rented")
+{
+	errors.add("This property has an active rental, so its status stays Rented until the rental is completed.");
+}
+if(activeCount == 0 && input.Availability_Status == "Rented")
+{
+	errors.add("Rented is set automatically when a rental becomes Active. Choose Available or Maintenance.");
+}
+if(errors.size() > 0)
+{
+	alert errors.toString("\n");
+	cancel submit;
+}

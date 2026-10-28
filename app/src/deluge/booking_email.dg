@@ -1,0 +1,30 @@
+// Booking confirmation email to the customer for every new booking,
+// with a copy to the business owner.
+if(isNewBooking && input.Rental_Status == "Reserved")
+{
+	guest = Customers[ID == input.Customer];
+	stay = Properties[ID == input.Property];
+	if(guest.count() > 0 && stay.count() > 0)
+	{
+		body = "<p>Dear " + guest.Customer_Name + ",</p>";
+		body = body + "<p>Thank you for booking with Coastline Stays. Your reservation is confirmed:</p>";
+		body = body + "<table cellpadding='6' style='border-collapse:collapse'>";
+		body = body + "<tr><td><b>Reference</b></td><td>" + input.Rental_Reference + "</td></tr>";
+		body = body + "<tr><td><b>Property</b></td><td>" + stay.Property_Name + "</td></tr>";
+		body = body + "<tr><td><b>Check-in</b></td><td>" + input.Start_Date.toString("EEEE, dd MMMM yyyy") + "</td></tr>";
+		body = body + "<tr><td><b>Check-out</b></td><td>" + input.End_Date.toString("EEEE, dd MMMM yyyy") + "</td></tr>";
+		body = body + "<tr><td><b>Nights</b></td><td>" + input.Number_of_Days + " x $" + input.Daily_Rate + "</td></tr>";
+		body = body + "<tr><td><b>Total</b></td><td><b>$" + input.Total_Cost + "</b></td></tr>";
+		body = body + "</table>";
+		body = body + "<p>If your plans change, just reply to this email and we will update or cancel the booking.</p>";
+		body = body + "<p>Coastline Stays</p>";
+		sendmail
+		[
+			from :zoho.adminuserid
+			to :guest.Email
+			cc :zoho.adminuserid
+			subject :"Booking confirmed: " + input.Rental_Reference + " - " + stay.Property_Name
+			message :body
+		]
+	}
+}

@@ -1,0 +1,80 @@
+// Mirror the rental in Zoho CRM as a Deal, so sales sees the booking pipeline.
+// The customer becomes an Account + Contact (matched by name / email, created if missing).
+// The Deal is created on the first save and updated on every later save.
+// A CRM failure never blocks the rental: it is logged and retried on the next save.
+cust = Customers[ID == input.Customer];
+if(cust.count() > 0 && prop.count() > 0)
+{
+	stages = Map();
+	stages.put("Reserved","Negotiation/Review");
+	stages.put("Active","Closed Won");
+	stages.put("Completed","Closed Won");
+	stages.put("Cancelled","Closed Lost");
+	try
+	{
+		accountId = "";
+		accounts = zoho.crm.searchRecords("Accounts","(Account_Name:equals:" + cust.Customer_Name + ")");
+		if(accounts.size() > 0)
+		{
+			accountId = accounts.get(0).get("id");
+		}
+		else
+		{
+			account = Map();
+			account.put("Account_Name",cust.Customer_Name);
+			account.put("Phone",cust.Phone);
+			account.put("Description","Rental customer synced from Zoho Creator.");
+			accountId = zoho.crm.createRecord("Accounts",account).get("id");
+		}
+		contactId = "";
+		contacts = zoho.crm.searchRecords("Contacts","(Email:equals:" + cust.Email + ")");
+		if(contacts.size() > 0)
+		{
+			contactId = contacts.get(0).get("id");
+		}
+		else
+		{
+			fullName = cust.Customer_Name.trim();
+			firstName = "";
+			lastName = fullName;
+			cut = fullName.lastIndexOf(" ");
+			if(cut > 0)
+			{
+				firstName = fullName.subString(0,cut);
+				lastName = fullName.subString(cut + 1);
+			}
+			contact = Map();
+			contact.put("First_Name",firstName);
+			contact.put("Last_Name",lastName);
+			contact.put("Email",cust.Email);
+			contact.put("Phone",cust.Phone);
+			contact.put("Account_Name",accountId);
+			contactId = zoho.crm.createRecord("Contacts",contact).get("id");
+		}
+		deal = Map();
+		deal.put("Deal_Name",input.Rental_Reference + " - " + prop.Property_Name);
+		deal.put("Amount",input.Total_Cost);
+		deal.put("Closing_Date",input.Start_Date.toString("yyyy-MM-dd"));
+		deal.put("Stage",stages.get(input.Rental_Status));
+		deal.put("Account_Name",accountId);
+		deal.put("Contact_Name",contactId);
+		deal.put("Description","Rental " + input.Rental_Reference + ": " + prop.Property_Name + ", " + input.Start_Date.toString("dd-MMM-yyyy") + " to " + input.End_Date.toString("dd-MMM-yyyy") + ". Status: " + input.Rental_Status + ". Synced from Zoho Creator.");
+		if(input.CRM_Deal_ID == null || input.CRM_Deal_ID == "")
+		{
+			response = zoho.crm.createRecord("Deals",deal);
+		}
+		else
+		{
+			response = zoho.crm.updateRecord("Deals",input.CRM_Deal_ID.toLong(),deal);
+		}
+		info response;
+		if(response.get("id") != null)
+		{
+			input.CRM_Deal_ID = response.get("id").toString();
+		}
+	}
+	catch (e)
+	{
+		info "CRM sync failed: " + e;
+	}
+}
