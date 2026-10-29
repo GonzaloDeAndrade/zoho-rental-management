@@ -202,15 +202,15 @@
   <div class="wrap">
     <div class="kicker">Demo</div>
     <h2>See it working</h2>
-    <p class="sub">A 90-second overview, and a technical walkthrough of the Deluge code and the integrations.</p>
+    <p class="sub">A short overview of the app on live data, and a walkthrough of the Deluge code behind it.</p>
     <div class="videos">
       <div class="card" style="overflow:hidden">
         <div class="video" id="video-main" data-video=""></div>
-        <div class="video-meta"><h3>Overview · 90 seconds</h3><p>Booking, validation, the CRM pipeline and the Books invoice, on live data.</p></div>
+        <div class="video-meta"><h3>Overview</h3><p>A booking with the double-booking check, the CRM deal, a deal lost in CRM cancelling the booking, and the automatic Books invoice.</p></div>
       </div>
       <div class="card" style="overflow:hidden">
         <div class="video" id="video-tech" data-video=""></div>
-        <div class="video-meta"><h3>Technical walkthrough · 3–4 min</h3><p>Architecture, Deluge rules, the two-way sync shown live, and the tests.</p></div>
+        <div class="video-meta"><h3>How it's built</h3><p>The Deluge code inside Zoho: the validation rules, the CRM and Books integration, and the CRM function that cancels a booking.</p></div>
       </div>
     </div>
   </div>
@@ -322,7 +322,7 @@
 <script>
   // Paste the YouTube video IDs here once the videos are uploaded
   // (the part after "v=" in the YouTube link).
-  const VIDEOS = { 'video-main': '', 'video-tech': '' };
+  const VIDEOS = { 'video-main': 'e-m0nT_tBM8', 'video-tech': 'KOYPTrm8sYY' };
 
   for (const [id, yt] of Object.entries(VIDEOS)) {
     const box = document.getElementById(id);

@@ -6,6 +6,8 @@ A working **Zoho Creator** application for a fictional property rental business,
 >
 > **Status:** deployed and tested in real Zoho accounts (Creator, CRM, Books). 53 test cases ran against the live apps and 52 passed. The remaining one (L01, delivery of the booking email) is waiting for the owner to confirm the copy in their inbox ([results](TEST_RESULTS.md)). All sample data is fictional.
 
+**Demo videos:** [Overview](https://www.youtube.com/watch?v=e-m0nT_tBM8) (booking, CRM deal, cancellation from CRM, Books invoice) · [How it's built](https://www.youtube.com/watch?v=KOYPTrm8sYY) (Deluge code walkthrough)
+
 ![Dashboard](screenshots/01-dashboard.png)
 
 ## How the apps work together
